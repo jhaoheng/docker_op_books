@@ -1,0 +1,29 @@
+# Conclusion
+
+> 如何做到攻防一體?
+
+1. git
+  - push to remote
+  - finish, notify user
+  - trigger registry(optional)
+2. registry 
+  - git pull, automate build image
+  - finish, notify user
+  - trigger Drone (optional)
+3. Drone
+  - docker pull image from registry
+  - run script
+  - finish, notify user & generate coverage.out
+  - if success, trigger deploy (optional)
+4. deploy : Kubernetes (Drone service)
+  - 原理
+    - 建立 k8s container
+    - 設定 config.yml
+    - 執行 deploy script
+      - 取得 gcp / aws 授權
+      - kubectl create -f config.yml
+
+# 對我來說是好習慣
+1. 保存好 Dockerfile
+2. 環境變數與設定檔盡量外放並與 compose.yml 整合
+3. 依照環境變數與 compose.yml 則可以建立 kube-config.yml, 透過 kubectl 部署到 AWS / GCP
