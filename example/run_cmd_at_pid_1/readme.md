@@ -30,3 +30,10 @@
     - `Stopping test ... done`
     - `Removing test ... done`
 3. The bin receive is `Signal :  terminated`
+
+# Others
+- If your Dockerfile:CMD run on the wrong way, you will get this:
+    - ![img-wrong](./assets/wrong.png)
+- The right way is 
+    - ![img-right](./assets/right.png)
+
